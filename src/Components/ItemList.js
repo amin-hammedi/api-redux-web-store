@@ -9,7 +9,7 @@ const ItemList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(handleGetItems());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="list">

@@ -1,10 +1,14 @@
 import axios from "axios";
-import { ADD, DELETE, GET_ITEMS } from "./actionType";
-import { type } from "@testing-library/user-event/dist/type";
+import { GET_ITEMS } from "./actionType";
 
 export const handleGetItems = () => async (dispatch) => {
   try {
-    const res = await axios.get("https://fakestoreapi.com/products");
+    const res = await axios.get("https://api.api-ninjas.com/v1/exercises", {
+      headers: {
+        "X-Api-Key": "gGEMDdPNGBh65gr4RhtUkg==SZmmHTbVk60C3OE1",
+      },
+    });
+
     dispatch({
       type: GET_ITEMS,
       payload: res.data,
@@ -13,16 +17,4 @@ export const handleGetItems = () => async (dispatch) => {
     console.log(error);
     alert("get error");
   }
-};
-export const handledelete = (ID) => {
-  return {
-    type: DELETE,
-    payload: ID,
-  };
-};
-export const handleADD = (newItem) => {
-  return {
-    type: ADD,
-    payload: newItem,
-  };
 };
