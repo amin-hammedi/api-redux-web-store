@@ -1,4 +1,5 @@
-import { GET_ITEMS } from "./actionType";
+import { combineReducers } from "redux";
+import { GET_ITEMS, SET_FILTER } from "./actionType";
 
 const init = {
   items: [],
@@ -16,3 +17,14 @@ export const reducer = (state = init, { type, payload }) => {
       return state;
   }
 };
+const filterReducer = (state = init.filter, action) => {
+  switch (action.type) {
+    case SET_FILTER:
+      return action.payload.filter;
+    default:
+      return state;
+  }
+};
+export default combineReducers({
+  filter: filterReducer,
+});
